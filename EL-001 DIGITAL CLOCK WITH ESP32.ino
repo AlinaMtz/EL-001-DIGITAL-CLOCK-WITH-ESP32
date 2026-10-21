@@ -1,4 +1,20 @@
-lcd.backlight();
+
+#include <WiFi.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <time.h>
+
+const char* ssid = "WI-FI";
+const char* password = "WI-FI PASSWORD";
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  Serial.begin(115200);
+  Wire.begin(21, 22);
+
+  lcd.init();
+  lcd.backlight();
   lcd.print("Conectando WiFi");
 
   WiFi.begin(ssid, password);
